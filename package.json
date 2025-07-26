@@ -1,0 +1,21 @@
+{
+  "name": "oauth-backend",
+  "version": "1.0.0",
+  "description": "OAuth backend for Google authentication",
+  "main": "oauth-backend.js",
+  "scripts": {
+    "start": "node oauth-backend.js",
+    "dev": "nodemon oauth-backend.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 
