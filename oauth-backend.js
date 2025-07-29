@@ -4,10 +4,12 @@ const cors = require('cors');
 
 const app = express();
 
-// Enable CORS for your app
+// Enable CORS for your app - allow all origins for testing
 app.use(cors({
-  origin: ['capacitor://localhost', 'http://localhost:3000', 'http://localhost:8100'],
-  credentials: true
+  origin: '*', // Allow all origins for now
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
@@ -20,9 +22,13 @@ const REDIRECT_URI = 'https://boloapp.io/auth.html';
 // Endpoint to exchange authorization code for access token
 app.post('/api/auth/google/callback', async (req, res) => {
   try {
+    console.log('Received request to /api/auth/google/callback');
+    console.log('Request body:', req.body);
+    
     const { code } = req.body;
     
     if (!code) {
+      console.error('No code provided in request');
       return res.status(400).json({ error: 'Authorization code is required' });
     }
 
