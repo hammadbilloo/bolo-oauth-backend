@@ -65,6 +65,16 @@ app.post('/api/auth/google/callback', async (req, res) => {
   }
 });
 
+// Test endpoint for mobile apps
+app.get('/test', (req, res) => {
+  console.log('Test endpoint called');
+  res.json({ 
+    status: 'OK', 
+    message: 'Backend is accessible from mobile app',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'OAuth backend is running' });
